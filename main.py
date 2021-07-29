@@ -40,7 +40,7 @@ for item in item_list:
     }
     articles.append(article)
 
-# CREATE EMAIL CONTENT/BODY
+# CREATE EMAIL CONTENT
 mail_body = f"Subject: Wiki News {today}\n\n"
 for a in articles:
     mail_body += f'\n{a["title"]}\n'
