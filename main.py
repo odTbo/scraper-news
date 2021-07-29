@@ -1,10 +1,17 @@
 from requests_html import HTMLSession
+from dotenv import load_dotenv
+from datetime import datetime
 import smtplib
 import os
 
-from_email = os.environ.get("FROM_EMAIL")
-to_email = os.environ.get("TO_EMAIL")
-e_pass = os.environ.get("PASSWORD")
+load_dotenv()
+
+from_email = os.getenv("FROM_EMAIL")
+to_email = os.getenv("TO_EMAIL")
+e_pass = os.getenv("PASSWORD")
+
+today = datetime.now()
+today = today.strftime("%d/%m/%Y")
 
 url = "https://en.wikipedia.org/wiki/Main_Page"
 
@@ -34,17 +41,18 @@ for item in item_list:
     articles.append(article)
 
 # CREATE EMAIL CONTENT/BODY
-mail_body = ""
+mail_body = f"Subject: Wiki News {today}\n\n"
 for a in articles:
     mail_body += f'\n{a["title"]}\n'
+    mail_body += "Links:\n"
     for link in a["links"]:
         mail_body += link
 
 # SEND EMAIL
 with smtplib.SMTP_SSL("smtp.gmail.com") as connection:
-    connection.login(user=email, password=e_pass)
+    connection.login(user=from_email, password=e_pass)
     connection.sendmail(
-        from_addr=email,
-        to_addrs=,
-        msg=f"Subject:Happy Birthday!\n\n{letter}"
+        from_addr=from_email,
+        to_addrs=to_email,
+        msg=mail_body
     )
