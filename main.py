@@ -44,7 +44,6 @@ for item in item_list:
 mail_body = f"Subject: Wiki News {today}\n\n"
 for a in articles:
     mail_body += f'\n{a["title"]}\n'
-    mail_body += "Links:\n"
     for link in a["links"]:
         mail_body += link
 
