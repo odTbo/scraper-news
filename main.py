@@ -25,10 +25,12 @@ s = HTMLSession()
 
 css_selector = "#mp-itn > ul > li"
 
+print("Fetching wiki page...")
 # FETCH WIKI PAGE
 r = s.get(url=url, headers=headers)
 item_list = r.html.find(css_selector)
 
+print("Compiling articles...")
 # GET ARTICLES
 articles = []
 for item in item_list:
@@ -40,6 +42,7 @@ for item in item_list:
     }
     articles.append(article)
 
+print("Creating email...")
 # CREATE EMAIL CONTENT
 mail_body = f"Subject: Wiki News {today}\n\n"
 for a in articles:
@@ -47,6 +50,7 @@ for a in articles:
     for link in a["links"]:
         mail_body += link
 
+print("Sending...")
 # SEND EMAIL
 with smtplib.SMTP_SSL("smtp.gmail.com") as connection:
     connection.login(user=from_email, password=e_pass)
@@ -55,3 +59,4 @@ with smtplib.SMTP_SSL("smtp.gmail.com") as connection:
         to_addrs=to_email,
         msg=mail_body
     )
+print("Done.")
