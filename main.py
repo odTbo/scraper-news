@@ -30,8 +30,8 @@ print("Fetching wiki page...")
 r = s.get(url=url, headers=headers)
 item_list = r.html.find(css_selector)
 
-print("Compiling articles...")
 # GET ARTICLES
+print("Compiling articles...")
 articles = []
 for item in item_list:
     title = item.text
@@ -41,17 +41,18 @@ for item in item_list:
         "links": links
     }
     articles.append(article)
+print(f"Number of articles: {len(article)}")
 
-print("Creating email...")
 # CREATE EMAIL CONTENT
+print("Creating email...")
 mail_body = f"Subject: Wiki News {today}\n\n"
 for a in articles:
     mail_body += f'\n{a["title"]}\n'
     for link in a["links"]:
         mail_body += link
 
-print("Sending...")
 # SEND EMAIL
+print("Sending...")
 with smtplib.SMTP_SSL("smtp.gmail.com") as connection:
     connection.login(user=from_email, password=e_pass)
     connection.sendmail(
