@@ -27,7 +27,7 @@ class WikiNews:
         print("Compiling articles...")
         for item in item_list:
             title = item.text
-            links = [f'https://en.wikipedia.org{a.attrs["href"]}\n' for a in item.find("a")]
+            links = [f'https://en.wikipedia.org{a.attrs["href"]}' for a in item.find("a")]
             article = {
                 "title": title,
                 "links": links
@@ -45,7 +45,7 @@ class WikiNews:
         for a in self.articles:
             self.mail_content += f'\n{a["title"]}\n'
             for link in a["links"]:
-                self.mail_content += link
+                self.mail_content += f"{link}\n"
 
     def send_email(self):
         try:
