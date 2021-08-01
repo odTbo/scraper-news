@@ -17,10 +17,6 @@ class WikiNews:
         self.mail_content = ""
         self.session = HTMLSession()
 
-        self.get_articles()
-        self.create_email()
-        self.send_email()
-
     def get_articles(self):
         # FETCH WIKI PAGE
         print("Fetching wiki page...")
@@ -64,6 +60,12 @@ class WikiNews:
         finally:
             print("Done.")
 
+    def run(self):
+        self.get_articles()
+        self.create_email()
+        self.send_email()
+
 
 if __name__ == "__main__":
     wiki = WikiNews()
+    wiki.run()
