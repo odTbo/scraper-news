@@ -2,8 +2,10 @@ from requests_html import HTMLSession
 from dotenv import load_dotenv
 from datetime import datetime
 import smtplib
-from variables import *
 import os
+from variables import *
+# ^^^ url, headers and css selector ^^^
+
 
 load_dotenv()
 
