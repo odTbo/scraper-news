@@ -10,12 +10,12 @@ load_dotenv()
 
 class WikiNews:
     def __init__(self):
+        self.session = HTMLSession()
         self.from_email = os.getenv("FROM_EMAIL")
         self.to_email = os.getenv("TO_EMAIL")
         self.e_pass = os.getenv("PASSWORD")
         self.articles = []
         self.mail_content = ""
-        self.session = HTMLSession()
 
     def get_articles(self):
         # FETCH WIKI PAGE
