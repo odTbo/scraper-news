@@ -1,5 +1,5 @@
 # wiki-news
-# wiki-news to email
+
 Simple Wiki News scraper
 Scrapes the latest news from wiki page and send them along with the relevant links to chosen email.
 
