@@ -6,5 +6,5 @@ headers = {
     "accept-language": "en-US;q=0.7,en;q=0.6",
 }
 
-# CSS selector for news article/s
+# CSS selector for wiki
 css_selector = "#mp-itn > ul > li"
