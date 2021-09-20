@@ -3,7 +3,7 @@ from dotenv import load_dotenv
 from datetime import datetime
 import smtplib
 import os
-from variables import *
+from constants import *
 # ^^^ url, headers and css selector ^^^
 
 
@@ -22,8 +22,8 @@ class WikiNews:
     def get_articles(self):
         # FETCH WIKI PAGE
         print("Fetching wiki page...")
-        r = self.session.get(url=url, headers=headers)
-        item_list = r.html.find(css_selector)
+        r = self.session.get(url=wiki_url, headers=headers)
+        item_list = r.html.find(wiki_css)
 
         # GET ARTICLES
         print("Compiling articles...")
