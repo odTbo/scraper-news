@@ -20,5 +20,12 @@ for item in item_list:
         "links": link
     }
     articles.append(article)
+
 print(f"Number of articles: {len(articles)}")
 print(articles)
+
+# Article page text
+r = session.get(articles[0]["links"][0], headers=headers)
+article_page = r.html.find("#clanok", first=True)
+article_text = "".join([item.text for item in article_page.find("p")])
+
