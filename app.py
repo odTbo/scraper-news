@@ -51,6 +51,7 @@ class News:
 
 if __name__ == "__main__":
     news = News()
-    # news.send_email()
     news.get_articles()
-    print(news.articles)
+    news.send_email()
+    # news.get_articles()
+    # print(news.articles)

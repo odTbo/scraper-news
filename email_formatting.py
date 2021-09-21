@@ -1,3 +1,5 @@
+import json
+
 start = """
 <!DOCTYPE html>
 <html>
@@ -14,7 +16,7 @@ end = """
 </html>
 """
 fill = """
-<h1>{}</h1>
+<h1 style="font-size:200%;">{}</h1>
 <p>{}</p>
 """
 
@@ -22,7 +24,13 @@ fill = """
 def create_message(articles):
     msg = start
     for article in articles:
-        msg += fill.format(article["title"], article["body"])
+        title = article["title"]
+        try:
+            body = article["body"]
+        except KeyError:
+            body = ""# json.dumps(article["links"])
+
+        msg += fill.format(title, body)
     msg += end
 
     return msg
