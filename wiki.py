@@ -4,8 +4,6 @@ from datetime import datetime
 import smtplib
 import os
 from constants import *
-# ^^^ url, headers and css selector ^^^
-
 
 load_dotenv()
 

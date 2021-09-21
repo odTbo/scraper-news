@@ -25,17 +25,17 @@ for item in item_list:
     title = item.text
     link = item.attrs["href"]
     body = get_body(link)
-    article = {
+
+    articles.append({
         "title": title,
         "body": body
-    }
-    articles.append(article)
+    })
 
 print(f"Number of articles: {len(articles)}")
 
 # articles: [{"title": "title_text", "body": "body_text"}, ...]
-# for article in articles:
-#     print(article)
+for article in articles:
+    print(article)
 
 
 
