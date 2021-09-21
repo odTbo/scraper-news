@@ -1,6 +1,6 @@
 # https://towardsdatascience.com/how-to-send-beautiful-emails-with-python-the-essential-guide-a01d00c80cd0
 from datetime import datetime
-from interez import InterezMixin
+from scrapers.interez import InterezMixin
 from dotenv import load_dotenv
 from email_formatting import create_message
 from email.message import EmailMessage
