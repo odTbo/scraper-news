@@ -2,7 +2,7 @@ from scrapers.constants import *
 from requests_html import HTMLSession
 
 
-class InterezMixin:
+class InterezScraper:
     def __init__(self):
         self.session = HTMLSession()
 

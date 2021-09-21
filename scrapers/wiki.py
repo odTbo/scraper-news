@@ -1,10 +1,10 @@
-from dotenv import load_dotenv
 from scrapers.constants import *
+from requests_html import HTMLSession
 
-load_dotenv()
 
-
-class WikiNews:
+class WikiScraper:
+    def __init__(self):
+        self.session = HTMLSession()
 
     def get_articles(self):
         # FETCH WIKI PAGE
@@ -12,6 +12,7 @@ class WikiNews:
         r = self.session.get(url=wiki_url, headers=headers)
         item_list = r.html.find(wiki_css)
 
+        articles = []
         # GET ARTICLES
         print("Compiling articles...")
         for item in item_list:
@@ -21,6 +22,8 @@ class WikiNews:
                 "title": title,
                 "links": links
             }
-            self.articles.append(article)
-        print(f"Number of articles: {len(self.articles)}")
+            articles.append(article)
+
+        print(f"Number of articles: {len(articles)}")
+        return articles
 
