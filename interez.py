@@ -1,41 +1,42 @@
 from constants import *
-
 from requests_html import HTMLSession
 
-session = HTMLSession()
 
 
-def get_body(link):
-    # Article page text
-    r = session.get(link, headers=headers)
-    article_page = r.html.find("#clanok", first=True)
-    article_text = "".join([item.text for item in article_page.find("p")])
+class InterezMixin:
+    def __init__(self):
+        self.session = HTMLSession()
 
-    return article_text
+    def get_articles(self):
+        print("Fetching Interez...")
+        r = self.session.get(url=interez_url, headers=headers)
+        item_list = r.html.find(interez_css)
 
-print("Fetching Interez...")
-r = session.get(url=interez_url, headers=headers)
-item_list = r.html.find(interez_css)
+        articles = []
+        # GET ARTICLES
+        print("Compiling articles...")
+        for item in item_list:
+            title = item.text
+            link = item.attrs["href"]
+            body = self.get_body(link)
 
+            articles.append({
+                "title": title,
+                "body": body
+            })
 
-articles = []
-# GET ARTICLES
-print("Compiling articles...")
-for item in item_list:
-    title = item.text
-    link = item.attrs["href"]
-    body = get_body(link)
+        print(f"Number of articles: {len(articles)}")
+        return articles
+        # articles: [{"title": "title_text", "body": "body_text"}, ...]
 
-    articles.append({
-        "title": title,
-        "body": body
-    })
+    def get_body(self, link):
+        # Article page text
+        r = self.session.get(link, headers=headers)
+        article_page = r.html.find("#clanok", first=True)
+        article_text = " ".join([item.text for item in article_page.find("p")])
 
-print(f"Number of articles: {len(articles)}")
+        return article_text
 
-# articles: [{"title": "title_text", "body": "body_text"}, ...]
-for article in articles:
-    print(article)
 
 
 
