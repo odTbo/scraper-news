@@ -1,9 +1,5 @@
-from requests_html import HTMLSession
 from dotenv import load_dotenv
-from datetime import datetime
-import smtplib
-import os
-from constants import *
+from scrapers.constants import *
 
 load_dotenv()
 

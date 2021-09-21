@@ -1,4 +1,4 @@
-from constants import *
+from scrapers.constants import *
 from requests_html import HTMLSession
 
 
