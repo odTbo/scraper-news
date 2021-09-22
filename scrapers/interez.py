@@ -16,7 +16,8 @@ class InterezScraper:
         # article_page = r.html.find("#clanok", first=True)
         # article_text = " ".join([item.text for item in article_page.find("p")])
         paragraphs = r.html.find("#clanok > p")
-        article_text = "<br><br>".join(p.text for p in paragraphs)
+        # print([p.text for p in paragraphs])
+        article_text = "<br><br>".join(p.text for p in paragraphs if len(p.text) != 0)
 
         return article_text
 

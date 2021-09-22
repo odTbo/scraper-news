@@ -6,7 +6,7 @@ start = """
     <body>
         <div style="padding:20px 0px">
             <div style="height: 500px;width:400px">
-                <div style="text-align:center;">
+                <div style="text-align:left;">
 """
 end = """
                 </div>
@@ -16,7 +16,7 @@ end = """
 </html>
 """
 fill = """
-<h1 style="font-size:175%;">{}</h1>
+<h1 style="font-size:180%;">{}</h1>
 <p>{}</p>
 """
 

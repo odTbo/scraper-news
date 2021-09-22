@@ -9,7 +9,7 @@ import os
 import smtplib
 
 load_dotenv()
-scrapers = [InterezScraper, WikiScraper]
+scrapers = [InterezScraper(), WikiScraper()]
 
 
 class News:
@@ -22,7 +22,7 @@ class News:
 
     def get_articles(self):
         for scraper in scrapers:
-            self.articles.extend(scraper().get_articles())
+            self.articles.extend(scraper.get_articles())
 
     def create_email(self) -> EmailMessage:
         today = datetime.now()
