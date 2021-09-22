@@ -3,6 +3,7 @@ headers = {
     "accept": "text/html",
     "accept-language": "en-US;q=0.7,en;q=0.6",
 }
+# https://www.w3schools.com/cssref/css_selectors.asp
 
 # Wiki news
 wiki_url = "https://en.wikipedia.org/wiki/Main_Page"

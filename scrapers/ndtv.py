@@ -8,19 +8,28 @@ class NDTVScraper:
     def __init__(self):
         self.session = HTMLSession()
 
-    # def get_article_body(self, link):
-    #     """Scrapes article's body from it's page."""
-    #
-    #     # Article page text
-    #     r = self.session.get(link, headers=headers)
-    #
-    #     # Article's paragraphs
-    #     paragraphs = r.html.find("#clanok > p")
-    #
-    #     # Text from all paragraph's separated with 2 line breaks
-    #     article_text = "<br><br>".join(p.text for p in paragraphs if len(p.text) != 0)
-    #
-    #     return article_text
+    def get_article_body(self, link):
+        """Scrapes article's body from it's page."""
+        def validate(p):
+            if len(p.text) == 0:
+                return False
+            elif "Promoted" in p.text:
+                return False
+            elif "Except for the headline" in p.text:
+                return False
+            else:
+                return True
+
+        # Article page text
+        r = self.session.get(link, headers=headers)
+
+        # Article's paragraphs
+        paragraphs = r.html.find(".sp-cn.ins_storybody > p")
+
+        # Text from all paragraphs
+        article_text = " ".join(p.text for p in paragraphs if validate(p))
+
+        return article_text
 
     def get_articles(self) -> list:
 
