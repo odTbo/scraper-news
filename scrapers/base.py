@@ -6,4 +6,6 @@ class ScraperBase:
 
     @abstractmethod
     def get_articles(self) -> list:
+        # articles = [{"title": "title_text", "body": "body_text"}, ...]
+        # return articles
         pass

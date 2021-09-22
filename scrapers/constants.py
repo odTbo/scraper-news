@@ -6,8 +6,12 @@ headers = {
 
 # Wiki news
 wiki_url = "https://en.wikipedia.org/wiki/Main_Page"
-wiki_css = "#mp-itn > ul > li"
+wiki_selector = "#mp-itn > ul > li"
 
 # Interez news
 interez_url = "https://www.interez.sk/spravy-zo-sveta/"
-interez_css = "#den > div > div > div.col-11.title > a"
+interez_selector = "#den > div > div > div.col-11.title > a"
+
+# NDTV news
+ndtv_url = "https://www.ndtv.com/world-news"
+ndtv_selector = "div.lisingNews > div.news_Itm > div.news_Itm-cont, div.news_Itm-img > a"

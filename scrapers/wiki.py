@@ -12,7 +12,7 @@ class WikiScraper:
         # FETCH WIKI PAGE
         print("Fetching wiki page...")
         r = self.session.get(url=wiki_url, headers=headers)
-        item_list = r.html.find(wiki_css)
+        item_list = r.html.find(wiki_selector)
 
         articles = []
         # GET ARTICLES

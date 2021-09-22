@@ -13,10 +13,11 @@ class InterezScraper:
 
         # Article page text
         r = self.session.get(link, headers=headers)
-        # article_page = r.html.find("#clanok", first=True)
-        # article_text = " ".join([item.text for item in article_page.find("p")])
+
+        # Article's paragraphs
         paragraphs = r.html.find("#clanok > p")
-        # print([p.text for p in paragraphs])
+
+        # Text from all paragraph's separated with 2 line breaks
         article_text = "<br><br>".join(p.text for p in paragraphs if len(p.text) != 0)
 
         return article_text
@@ -26,7 +27,7 @@ class InterezScraper:
 
         print("Fetching Interez...")
         r = self.session.get(url=interez_url, headers=headers)
-        item_list = r.html.find(interez_css)
+        item_list = r.html.find(interez_selector)
 
         articles = []
         # GET ARTICLES
@@ -43,7 +44,6 @@ class InterezScraper:
 
         print(f"Number of articles: {len(articles)}")
         return articles
-        # articles: [{"title": "title_text", "body": "body_text"}, ...]
 
 
 if __name__ == "__main__":
