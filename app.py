@@ -11,6 +11,7 @@ import smtplib
 load_dotenv()
 scrapers = [InterezScraper, WikiScraper]
 
+
 class News:
     def __init__(self):
         super().__init__()
@@ -23,8 +24,7 @@ class News:
         for scraper in scrapers:
             self.articles.extend(scraper().get_articles())
 
-
-    def create_email(self):
+    def create_email(self) -> EmailMessage:
         today = datetime.now()
         today = today.strftime("%d/%m/%Y")
 

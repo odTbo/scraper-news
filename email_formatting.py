@@ -16,7 +16,7 @@ end = """
 </html>
 """
 fill = """
-<h1 style="font-size:200%;">{}</h1>
+<h1 style="font-size:175%;">{}</h1>
 <p>{}</p>
 """
 

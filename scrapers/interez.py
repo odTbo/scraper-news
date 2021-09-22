@@ -3,6 +3,8 @@ from requests_html import HTMLSession
 
 
 class InterezScraper:
+    NAME = "INTEREZ"
+
     def __init__(self):
         self.session = HTMLSession()
 
@@ -18,7 +20,7 @@ class InterezScraper:
 
         return article_text
 
-    def get_articles(self):
+    def get_articles(self) -> list:
         """Scrapes top 4 articles in the past 24h from Interez."""
 
         print("Fetching Interez...")

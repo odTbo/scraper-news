@@ -3,10 +3,12 @@ from requests_html import HTMLSession
 
 
 class WikiScraper:
+    NAME = "WIKI"
+
     def __init__(self):
         self.session = HTMLSession()
 
-    def get_articles(self):
+    def get_articles(self) -> list:
         # FETCH WIKI PAGE
         print("Fetching wiki page...")
         r = self.session.get(url=wiki_url, headers=headers)
@@ -20,10 +22,14 @@ class WikiScraper:
             links = [f'https://en.wikipedia.org{a.attrs["href"]}' for a in item.find("a")]
             article = {
                 "title": title,
-                "links": links
+                "body": "\n".join(links)
             }
             articles.append(article)
 
         print(f"Number of articles: {len(articles)}")
         return articles
 
+
+if __name__ == "__main__":
+    s = WikiScraper()
+    print(s.get_articles())
