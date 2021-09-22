@@ -14,4 +14,4 @@ interez_selector = "#den > div > div > div.col-11.title > a"
 
 # NDTV news
 ndtv_url = "https://www.ndtv.com/world-news"
-ndtv_selector = "div.lisingNews > div.news_Itm > div.news_Itm-cont, div.news_Itm-img > a"
+ndtv_selector = "div.lisingNews > div.news_Itm > div.news_Itm-cont" # div.news_Itm-img > a

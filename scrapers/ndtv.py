@@ -23,29 +23,28 @@ class NDTVScraper:
     #     return article_text
 
     def get_articles(self) -> list:
-        """Scrapes top 4 articles in the past 24h from Interez."""
 
-        print("Fetching Interez...")
+        print("Fetching NDTV...")
         r = self.session.get(url=ndtv_url, headers=headers)
         r.raise_for_status()
         item_list = r.html.find(ndtv_selector)
         print(len(item_list))
         print(item_list)
-        # articles = []
-        # # GET ARTICLES
-        # print("Compiling articles...")
-        # for item in item_list:
-        #     title = item.text
-        #     link = item.attrs["href"]
-        #     body = self.get_article_body(link)
-        #
-        #     articles.append({
-        #         "title": title,
-        #         "body": body
-        #     })
-        #
-        # print(f"Number of articles: {len(articles)}")
-        # return articles
+        articles = []
+        # GET ARTICLES
+        print("Compiling articles...")
+        for item in item_list:
+            title = item.find(".newsHdng", first=True).text
+            # link = item.attrs["href"]
+            body = item.find("p", first=True).text
+
+            articles.append({
+                "title": title,
+                "body": body
+            })
+
+        print(f"Number of articles: {len(articles)}")
+        return articles
 
 
 if __name__ == "__main__":
