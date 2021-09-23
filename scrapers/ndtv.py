@@ -37,8 +37,8 @@ class NDTVScraper:
         r = self.session.get(url=ndtv_url, headers=headers)
         r.raise_for_status()
         item_list = r.html.find(ndtv_selector)
-        print(len(item_list))
-        print(item_list)
+        # print(len(item_list))
+        # print(item_list)
         articles = []
         # GET ARTICLES
         print("Compiling articles...")
