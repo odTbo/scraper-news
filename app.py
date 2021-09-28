@@ -2,6 +2,7 @@
 from datetime import datetime
 from scrapers.interez import InterezScraper
 from scrapers.wiki import WikiScraper
+from scrapers.reuters import ReutersScraper
 from dotenv import load_dotenv
 from email_formatting import create_message
 from email.message import EmailMessage
@@ -9,7 +10,7 @@ import os
 import smtplib
 
 load_dotenv()
-scrapers = [InterezScraper(), WikiScraper()]
+scrapers = [ReutersScraper]
 
 
 class News:
@@ -22,7 +23,7 @@ class News:
 
     def get_articles(self):
         for scraper in scrapers:
-            self.articles.extend(scraper.get_articles())
+            self.articles.extend(scraper().get_articles())
 
     def create_email(self) -> EmailMessage:
         today = datetime.now()
