@@ -30,6 +30,13 @@ def create_message(articles):
         except KeyError:
             body = ""# json.dumps(article["links"])
 
+        try:
+            link = article["link"]
+        except KeyError:
+            pass
+        else:
+            body += "\n" + link
+
         msg += fill.format(title, body)
     msg += end
 

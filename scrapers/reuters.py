@@ -41,25 +41,24 @@ class ReutersScraper:
         r = self.session.get(url=reuters_url, headers=headers, params=reuters_query)
         r.raise_for_status()
 
-        articles = r.json()["result"]["articles"]
-        print("Number of articles: {}".format(len(articles)))
+        content = r.json()["result"]["articles"]
+        print("Number of articles: {}".format(len(content)))
 
-        for article in articles:
-            print(article["title"], article["description"], "https://www.reuters.com" + article["canonical_url"])
-
+        articles = []
         # # GET ARTICLES
-        # print("Compiling articles...")
-        # for item in item_list:
-        #     title = item.text
-        #     link = item.attrs["href"]
-        #     body = self.get_article_body(link)
-        #
-        #     articles.append({
-        #         "title": title,
-        #         "body": body
-        #     })
-        #
-        # print(f"Number of articles: {len(articles)}")
+        print("Compiling articles...")
+        for article in content:
+            title = article["title"]
+            link = "https://www.reuters.com" + article["canonical_url"]
+            body = article["description"]
+
+            articles.append({
+                "title": title,
+                "body": body,
+                "link": link
+            })
+
+        print(f"Number of articles: {len(articles)}")
         return articles
 
 
