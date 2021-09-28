@@ -33,8 +33,7 @@ class ReutersScraper:
         print("Number of articles: {}".format(len(articles)))
 
         for article in articles:
-            print(article["title"])
-            print(article["description"])
+            print(article["title"], article["description"], article["canonical_url"])
 
         # # GET ARTICLES
         # print("Compiling articles...")

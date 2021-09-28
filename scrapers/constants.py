@@ -24,7 +24,7 @@ reuters_url = "https://www.reuters.com/pf/api/v3/content/fetch/articles-by-secti
 query = {
     "fetch_type": "collection",
     "orderby": "last_updated_date:desc",
-    "section_id": "/world/europe",
+    "section_id": "/world",
     "size": 5,
     "website": "reuters"
 }
