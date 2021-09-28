@@ -8,7 +8,7 @@ class InterezScraper:
     def __init__(self):
         self.session = HTMLSession()
 
-    def get_article_body(self, link: str) -> list:
+    def get_article_body(self, link: str) -> str:
         """Scrapes article's body from it's page."""
 
         # Article page text
@@ -20,7 +20,7 @@ class InterezScraper:
         # Text from all paragraph's separated with 2 line breaks
         # article_text = "<br><br>".join(p.text for p in paragraph_elements if len(p.text) != 0)
         paragraphs = [p.text for p in paragraph_elements if len(p.text) != 0]
-        return paragraphs
+        return "<br><br>".join(paragraphs[:2])
 
     def get_articles(self) -> list:
         """Scrapes top 4 articles in the past 24h."""
@@ -35,7 +35,7 @@ class InterezScraper:
         for item in item_list:
             title = item.text
             link = item.attrs["href"]
-            body = self.get_article_body(link)[:2]
+            body = self.get_article_body(link)
 
             articles.append({
                 "title": title,

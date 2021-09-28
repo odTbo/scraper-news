@@ -29,7 +29,6 @@ class ReutersScraper:
         r.raise_for_status()
 
         content = r.json()["result"]["articles"]
-        print("Number of articles: {}".format(len(content)))
 
         articles = []
         # # GET ARTICLES
