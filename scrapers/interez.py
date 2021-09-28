@@ -20,7 +20,7 @@ class InterezScraper:
         # Text from all paragraph's separated with 2 line breaks
         # article_text = "<br><br>".join(p.text for p in paragraph_elements if len(p.text) != 0)
         paragraphs = [p.text for p in paragraph_elements if len(p.text) != 0]
-        return "<br><br>".join(paragraphs[:2])
+        return paragraphs[0]
 
     def get_articles(self) -> list:
         """Scrapes top 4 articles in the past 24h."""
