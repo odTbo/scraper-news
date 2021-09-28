@@ -29,11 +29,11 @@ class ReutersScraper:
         r = self.session.get(url=reuters_url, headers=headers, params=reuters_query)
         r.raise_for_status()
 
-        articles = r.json()#["result"]["articles"]
-        # print("Number of articles: {}".format(len(articles)))
+        articles = r.json()["result"]["articles"]
+        print("Number of articles: {}".format(len(articles)))
 
-        # for article in articles:
-        #     print(article["title"])
+        for article in articles:
+            print(article["title"])
 
         # # GET ARTICLES
         # print("Compiling articles...")

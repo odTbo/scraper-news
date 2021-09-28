@@ -29,7 +29,7 @@ query = {
     "website": "reuters"
 }
 reuters_query = {
-    "query": json.dumps(query),
-    "d": 53,
-    "_website": "reuters"
+    "query": json.dumps(query)
+    # "d": 53,
+    # "_website": "reuters"
 }
