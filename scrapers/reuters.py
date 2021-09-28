@@ -34,6 +34,7 @@ class ReutersScraper:
 
         for article in articles:
             print(article["title"])
+            print(article["description"])
 
         # # GET ARTICLES
         # print("Compiling articles...")
