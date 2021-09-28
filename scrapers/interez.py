@@ -36,7 +36,7 @@ class InterezScraper:
             title = item.text
             link = item.attrs["href"]
             body = self.get_article_body(link)[:2]
-            print(title, link, body)
+
             articles.append({
                 "title": title,
                 "body": body,
