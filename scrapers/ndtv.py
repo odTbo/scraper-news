@@ -2,6 +2,18 @@ from scrapers.constants import *
 from requests_html import HTMLSession
 
 
+def validate(p):
+    """Validates paragraph"""
+    if len(p.text) == 0:
+        return False
+    elif "Promoted" in p.text:
+        return False
+    elif "Except for the headline" in p.text:
+        return False
+    else:
+        return True
+
+
 class NDTVScraper:
     NAME = "NDTV"
 
@@ -10,15 +22,6 @@ class NDTVScraper:
 
     def get_article_body(self, link):
         """Scrapes article's body from it's page."""
-        def validate(p):
-            if len(p.text) == 0:
-                return False
-            elif "Promoted" in p.text:
-                return False
-            elif "Except for the headline" in p.text:
-                return False
-            else:
-                return True
 
         # Article page text
         r = self.session.get(link, headers=headers)
@@ -27,7 +30,7 @@ class NDTVScraper:
         paragraphs = r.html.find(".sp-cn.ins_storybody > p")
 
         # Text from all paragraphs
-        article_text = " ".join(p.text for p in paragraphs if validate(p))
+        article_text = " ".join(p.text for p in paragraphs) #  if validate(p)
 
         return article_text
 
