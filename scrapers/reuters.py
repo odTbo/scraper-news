@@ -1,6 +1,18 @@
 from scrapers.constants import *
 from requests_html import HTMLSession
 
+regions = [
+    "/world/africa",
+    "/world/americas",
+    "/world/asia-pacific",
+    "/world/china",
+    "/world/europe",
+    "/world/india",
+    "/world/middle-east",
+    "/world/uk",
+    "/world/us",
+    # /breakingviews  -not a region
+]
 
 class ReutersScraper:
     NAME = "REUTERS"
@@ -33,7 +45,7 @@ class ReutersScraper:
         print("Number of articles: {}".format(len(articles)))
 
         for article in articles:
-            print(article["title"], article["description"], article["canonical_url"])
+            print(article["title"], article["description"], "https://www.reuters.com" + article["canonical_url"])
 
         # # GET ARTICLES
         # print("Compiling articles...")
