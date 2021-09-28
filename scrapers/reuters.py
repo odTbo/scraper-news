@@ -21,20 +21,6 @@ class ReutersScraper:
     def __init__(self):
         self.session = HTMLSession()
 
-    # def get_article_body(self, link):
-    #     """Scrapes article's body from it's page."""
-    #
-    #     # Article page text
-    #     r = self.session.get(link, headers=headers)
-    #
-    #     # Article's paragraphs
-    #     paragraphs = r.html.find("#clanok > p")
-    #
-    #     # Text from all paragraph's separated with 2 line breaks
-    #     article_text = "<br><br>".join(p.text for p in paragraphs if len(p.text) != 0)
-    #
-    #     return article_text
-
     def get_articles(self) -> list:
         """Scrapes top articles in the past 24h."""
 

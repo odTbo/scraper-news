@@ -8,19 +8,19 @@ class InterezScraper:
     def __init__(self):
         self.session = HTMLSession()
 
-    def get_article_body(self, link):
+    def get_article_body(self, link: str) -> list:
         """Scrapes article's body from it's page."""
 
         # Article page text
         r = self.session.get(link, headers=headers)
 
         # Article's paragraphs
-        paragraphs = r.html.find("#clanok > p")
+        paragraph_elements = r.html.find("#clanok > p")
 
         # Text from all paragraph's separated with 2 line breaks
-        article_text = "<br><br>".join(p.text for p in paragraphs if len(p.text) != 0)
-
-        return article_text
+        # article_text = "<br><br>".join(p.text for p in paragraph_elements if len(p.text) != 0)
+        paragraphs = [p.text for p in paragraph_elements if len(p.text) != 0]
+        return paragraphs
 
     def get_articles(self) -> list:
         """Scrapes top 4 articles in the past 24h."""
@@ -35,11 +35,12 @@ class InterezScraper:
         for item in item_list:
             title = item.text
             link = item.attrs["href"]
-            body = self.get_article_body(link)
-
+            body = self.get_article_body(link)[:2]
+            print(title, link, body)
             articles.append({
                 "title": title,
-                "body": body
+                "body": body,
+                "link": link
             })
 
         print(f"Number of articles: {len(articles)}")
