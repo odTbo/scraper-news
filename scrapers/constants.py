@@ -25,7 +25,7 @@ query = {
     "fetch_type": "collection",
     "orderby": "last_updated_date:desc",
     "section_id": "/breakingviews",
-    "size": 15,
+    "size": 5,
     "website": "reuters"
 }
 reuters_query = {

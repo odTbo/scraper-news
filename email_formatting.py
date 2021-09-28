@@ -35,7 +35,7 @@ def create_message(articles):
         except KeyError:
             pass
         else:
-            body += "\n" + link
+            body += "<br>" + link
 
         msg += fill.format(title, body)
     msg += end

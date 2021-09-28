@@ -10,7 +10,7 @@ import os
 import smtplib
 
 load_dotenv()
-scrapers = [ReutersScraper]
+scrapers = [ReutersScraper, InterezScraper]
 
 
 class News:

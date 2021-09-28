@@ -14,6 +14,7 @@ regions = [
     # /breakingviews  -not a region
 ]
 
+
 class ReutersScraper:
     NAME = "REUTERS"
 
