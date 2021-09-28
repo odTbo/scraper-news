@@ -23,7 +23,7 @@ class InterezScraper:
         return article_text
 
     def get_articles(self) -> list:
-        """Scrapes top 4 articles in the past 24h from Interez."""
+        """Scrapes top 4 articles in the past 24h."""
 
         print("Fetching Interez...")
         r = self.session.get(url=interez_url, headers=headers)
