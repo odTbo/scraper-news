@@ -14,6 +14,25 @@ regions = [
     # /breakingviews  -not a region
 ]
 
+categories = [
+    "/business/aerospace-defense",
+    "/business/autos-transportation",
+    "/business/energy",
+    "/business/environment",
+    "/business/finance",
+    "/business/healthcare-pharmaceuticals",
+    "/business/media-telecom",
+    "/business/retail-consumer",
+    "/business/sustainable-business",
+    "/business/change-suite",
+    "/business/future-of-health",
+    "/business/future-of-money",
+    "/business/macromatters",
+    "/business/take-five",
+    "/business/reuters-impact"
+
+]
+
 
 class ReutersScraper:
     NAME = "REUTERS"
@@ -25,7 +44,9 @@ class ReutersScraper:
         """Scrapes top articles in the past 24h."""
 
         print("Fetching Reuters...")
-        r = self.session.get(url=reuters_url, headers=headers, params=reuters_query)
+        section = regions[4]
+        query = reuters_query(section_id=section)
+        r = self.session.get(url=reuters_url, headers=headers, params=query)
         r.raise_for_status()
 
         content = r.json()["result"]["articles"]
@@ -51,3 +72,5 @@ class ReutersScraper:
 if __name__ == "__main__":
     s = ReutersScraper()
     print(s.get_articles())
+    # for category in categories:
+    #     print(s.get_articles(category))

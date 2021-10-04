@@ -21,15 +21,19 @@ ndtv_selector = "div.lisingNews > div.news_Itm > div.news_Itm-cont" # div.news_I
 
 # Reuters
 reuters_url = "https://www.reuters.com/pf/api/v3/content/fetch/articles-by-section-alias-or-id-v1"
-query = {
-    "fetch_type": "collection",
-    "orderby": "last_updated_date:desc",
-    "section_id": "/breakingviews",
-    "size": 5,
-    "website": "reuters"
-}
-reuters_query = {
-    "query": json.dumps(query)
-    # "d": 53,
-    # "_website": "reuters"
-}
+
+
+def reuters_query(section_id: str, num_articles=5) -> dict:
+    q = {
+        "fetch_type": "collection",
+        "orderby": "last_updated_date:desc",
+        "section_id": section_id,
+        "size": num_articles,
+        "website": "reuters"
+    }
+    query = {
+        "query": json.dumps(q)
+        # "d": 53,
+        # "_website": "reuters"
+    }
+    return query
