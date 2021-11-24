@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 
 
-class ScraperBase:
+class ScraperBase(ABC):
     NAME = None
 
     @abstractmethod
